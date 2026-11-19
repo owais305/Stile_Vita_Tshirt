@@ -1,0 +1,20 @@
+{
+  "name": "tshirt-store",
+  "version": "1.0.0",
+  "description": "T-shirt store: client shop + admin panel (Node.js + MongoDB). Based on the MCSL-217 ER model.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "start:env": "node --env-file=.env server.js",
+    "seed": "node scripts/seed.js",
+    "test": "node test/run.js && node test/razorpay.js && node test/upi.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "mongodb": "^6.8.0"
+  },
+  "license": "MIT"
+}

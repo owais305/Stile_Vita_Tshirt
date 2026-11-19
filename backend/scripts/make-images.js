@@ -1,0 +1,11 @@
+'use strict';
+// node scripts/make-images.js  -> creates the demo t-shirt pictures (SVG) in public/img/tshirts/
+const fs = require('fs'), path = require('path');
+const S = [['classic-white', '#f7f7f7', '#1d1d1f', ['BASIC', 'CLASSIC TEE']], ['midnight-black', '#1b1b1f', '#ffffff', ['NIGHT', 'OWL']], ['navy-pocket', '#203a5f', '#ffffff', ['EST. 2026']], ['sunset-graphic', '#ff8a3d', '#ffffff', ['SUNSET', 'VIBES']],
+  ['retro-wave', '#6b4fbb', '#ffe66d', ['RETRO', 'WAVE']], ['forest-trek', '#2f6f4f', '#f1f7e8', ['TREK', 'MORE']], ['code-mode', '#3a3f47', '#7CFFB2', ['</>', 'CODE MODE']], ['coffee-first', '#8b5a3c', '#fff1de', ['COFFEE', 'FIRST']],
+  ['ocean-breeze', '#1fa3a3', '#ffffff', ['OCEAN', 'BREEZE']], ['oversized-cloud', '#d9dde3', '#33384a', ['CLOUD', '9']], ['kids-rainbow', '#ffd23f', '#d6336c', ['RAINBOW', 'KID']], ['polo-sport', '#c0392b', '#ffffff', ['SPORT', 'CLUB']], ['blush-crop', '#f4a6b8', '#ffffff', ['BLUSH', 'GIRL']]];
+const e = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const dir = path.join(__dirname, '..', '..', 'frontend', 'shared', 'img', 'tshirts'); fs.mkdirSync(dir, { recursive: true });
+for (const [n, c, ink, t] of S) fs.writeFileSync(path.join(dir, n + '.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#eceff6"/><ellipse cx="200" cy="372" rx="120" ry="10" fill="#000" opacity=".08"/><path d="M130 50 L170 38 C182 62 218 62 230 38 L270 50 L345 105 L305 160 L270 138 L270 350 L130 350 L130 138 L95 160 L55 105 Z" fill="${c}" stroke="#000" stroke-opacity=".18" stroke-width="2" stroke-linejoin="round"/><path d="M170 38 C182 80 218 80 230 38" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="5" stroke-linecap="round"/>${t.map((x, i) => `<text x="200" y="${215 + i * 38}" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="${i ? 26 : 40}" fill="${ink}" letter-spacing="2">${e(x)}</text>`).join('')}</svg>`);
+fs.writeFileSync(path.join(dir, '..', 'placeholder.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#eceff5"/><text x="200" y="210" text-anchor="middle" font-family="Arial" font-size="28" fill="#9aa3b5">No image</text></svg>');
+console.log('images created');
