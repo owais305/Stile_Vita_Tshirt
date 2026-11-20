@@ -23,7 +23,7 @@ async function startRzp(order) {
   const ro = await rzp('POST', '/orders', { amount: Math.round(order.total * 100), currency: 'INR', receipt: order.orderNo, notes: { orderId: String(order._id), orderNo: order.orderNo } });
   const pay = (await C.payments.find({ orderId: order._id }).toArray())[0];
   await C.payments.updateMany({ orderId: order._id }, { $set: { razorpayOrderId: ro.id, razorpayOrderIds: [...(pay.razorpayOrderIds || []), ro.id] } });
-  return { keyId: RZP.id, orderId: ro.id, amount: ro.amount, currency: ro.currency || 'INR', name: 'ABC Tees', description: 'Order ' + order.orderNo };
+  return { keyId: RZP.id, orderId: ro.id, amount: ro.amount, currency: ro.currency || 'INR', name: 'Stile vita', description: 'Order ' + order.orderNo };
 }
 // step 3: payment verified -> mark paid (idempotent). A payment that arrives after the order was cancelled is refunded.
 async function markPaid(o, paymentId) {

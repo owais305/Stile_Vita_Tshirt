@@ -28,7 +28,7 @@
   }
   const PAGES = [['dash', 'Dashboard'], ['products', 'T-shirts'], ['inventory', 'Stock (inventory)'], ['orders', 'Orders'], ['pos', 'In-store billing'], ['categories', 'Categories'], ['stores', 'Stores'], ['employees', 'Employees'], ['customers', 'Customers'], ['payments', 'Payments'], ['settings', 'Settings']];
   function shell(me) {
-    root.innerHTML = `<div class="adm"><aside class="side"><a class="brand" href="#dash"><b>ABC Tees</b> admin</a>${PAGES.map(([k, t]) => `<a href="#${k}" data-nav="${k}">${t}</a>`).join('')}<a href="/" target="_blank">View shop</a><a href="#" data-a="logout">Logout (${esc(me.username)})</a></aside><main class="main" id="main"></main></div>`;
+    root.innerHTML = `<div class="adm"><aside class="side"><a class="brand" href="#dash"><b>Stile Vita</b> admin</a>${PAGES.map(([k, t]) => `<a href="#${k}" data-nav="${k}">${t}</a>`).join('')}<a href="/" target="_blank">View shop</a><a href="#" data-a="logout">Logout (${esc(me.username)})</a></aside><main class="main" id="main"></main></div>`;
     route();
   }
   async function route() {
